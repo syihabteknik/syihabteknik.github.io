@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>portofolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Comfortaa:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #f72585;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4cc9f0;
+            --warning: #fca311;
+            --rainbow-1: #ff6b6b;
+            --rainbow-2: #ffbe0b;
+            --rainbow-3: #3a86ff;
+            --rainbow-4: #8338ec;
+            --rainbow-5: #06d6a0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.3;
+        }
+
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            background: var(--rainbow-1);
+            top: 10%;
+            left: 5%;
+            filter: blur(80px);
+        }
+
+        .shape-2 {
+            width: 250px;
+            height: 250px;
+            background: var(--rainbow-3);
+            bottom: 15%;
+            right: 10%;
+            filter: blur(70px);
+        }
+
+        .shape-3 {
+            width: 200px;
+            height: 200px;
+            background: var(--rainbow-5);
+            top: 50%;
+            left: 20%;
+            filter: blur(60px);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            padding: 40px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--rainbow-1), var(--rainbow-2), var(--rainbow-3), var(--rainbow-4), var(--rainbow-5));
+            opacity: 0.2;
+            filter: blur(50px);
+            z-index: 1;
+        }
+
+        h1 {
+            font-family: 'Comfortaa', cursive;
+            font-size: 4.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, var(--rainbow-1), var(--rainbow-2), var(--rainbow-3), var(--rainbow-4), var(--rainbow-5));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: rainbow 10s linear infinite;
+        }
+
+        @keyframes rainbow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        .tagline {
+            font-size: 1.8rem;
+            color: var(--secondary);
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            padding: 15px 30px;
+            margin: 20px auto;
+            max-width: 800px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 8px 15px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        nav li a:hover, 
+        nav li a.active {
+            background: linear-gradient(90deg, var(--rainbow-1), var(--rainbow-2));
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        /* Main Content */
+        main {
+            padding: 50px 0;
+        }
+
+        section {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--rainbow-3), var(--rainbow-5));
+            border-radius: 5px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .profile-img {
+            flex: 0 0 300px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .profile-img::before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: linear-gradient(45deg, var(--rainbow-1), var(--rainbow-2), var(--rainbow-3));
+            z-index: -1;
+            border-radius: 25px;
+        }
+
+        .profile-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 20px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .skill-tag {
+            background: linear-gradient(90deg, var(--rainbow-4), var(--rainbow-5));
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            box-shadow: 0 5px 15px rgba(131, 56, 236, 0.2);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-img img {
+            transform: scale(1.1);
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .project-tag {
+            background: rgba(67, 97, 238, 0.1);
+            color: var(--primary);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, var(--rainbow-1), var(--rainbow-2));
+            color: white;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(90deg, var(--rainbow-3), var(--rainbow-4));
+            color: white;
+            box-shadow: 0 5px 15px rgba(58, 134, 255, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Contact Section */
+        .contact-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group.full {
+            grid-column: span 2;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--secondary);
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid rgba(67, 97, 238, 0.2);
+            border-radius: 15px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.7);
+            transition: all 0.3s ease;
+        }
+
+        input:focus, textarea:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+        }
+
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            grid-column: span 2;
+            display: flex;
+            justify-content: center;
+        }
+
+        .btn-lg {
+            padding: 15px 40px;
+            font-size: 1.1rem;
+        }
+
+        #status {
+            text-align: center;
+            margin-top: 20px;
+            font-weight: 600;
+            min-height: 24px;
+        }
+
+        .success {
+            color: var(--rainbow-5);
+        }
+
+        .error {
+            color: var(--rainbow-1);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(90deg, var(--secondary), var(--primary));
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            border-radius: 25px 25px 0 0;
+            margin-top: 50px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .social-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .profile-img {
+                flex: 0 0 auto;
+                width: 100%;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            
+            .contact-form {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-group.full {
+                grid-column: span 1;
+            }
+            
+            .submit-btn {
+                grid-column: span 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3.5rem;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            section {
+                padding: 30px;
+            }
+        }
+
+        /* TOMBOL WHATSAPP BARU */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            background-color: #128C7E;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating background shapes -->
+    <div class="floating-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="header-bg"></div>
+            <div class="header-content">
+                <h1>SYIHAB TEKNIK</h1>
+                <p class="tagline">Hardware & software enginer</p>
+            </div>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="#tentang" class="active">Tentang</a></li>
+                <li><a href="#proyek">Proyek</a></li>
+                <li><a href="#kontak">Kontak</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <section id="tentang">
+                <h2>Tentang Saya</h2>
+                <div class="about-content">
+                    <div class="profile-img">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Profil Saya">
+                    </div>
+                    <div class="about-text">
+                        <p>Halo! Saya seorang desainer dan pengembang web kreatif dengan passion untuk menciptakan pengalaman digital yang menakjubkan. Dengan lebih dari 5 tahun pengalaman, saya menggabungkan estetika visual dengan fungsionalitas teknis untuk menciptakan solusi yang efektif dan memukau.</p>
+                        <p>Pendekatan saya berfokus pada desain berpusat pada pengguna, memastikan setiap proyek tidak hanya terlihat indah tetapi juga intuitif dan mudah digunakan. Saya terus mengikuti perkembangan tren desain terbaru dan teknologi web untuk memberikan hasil terbaik bagi klien.</p>
+                        
+                        <h3>Keahlian</h3>
+                        <div class="skills">
+                            <span class="skill-tag">UI/UX Design</span>
+                            <span class="skill-tag">Frontend Development</span>
+                            <span class="skill-tag">Responsive Design</span>
+                            <span class="skill-tag">Animasi Web</span>
+                            <span class="skill-tag">Brand Identity</span>
+                            <span class="skill-tag">Prototyping</span>
+                            <span class="skill-tag">Hardware services</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="proyek">
+                <h2>Proyek Terbaru</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80" alt="Proyek E-Commerce">
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Platform E-Commerce Modern</h3>
+                            <p>Platform belanja online dengan UI interaktif dan pengalaman pengguna yang mulus.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">React</span>
+                                <span class="project-tag">Node.js</span>
+                                <span class="project-tag">MongoDB</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="btn btn-primary">Lihat</a>
+                                <a href="#" class="btn btn-secondary">Kode Sumber</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Aplikasi Produktivitas">
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Aplikasi Produktivitas</h3>
+                            <p>Aplikasi manajemen tugas dengan fitur kolaborasi tim dan pelacakan waktu.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Vue.js</span>
+                                <span class="project-tag">Firebase</span>
+                                <span class="project-tag">SCSS</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="btn btn-primary">Lihat</a>
+                                <a href="#" class="btn btn-secondary">Kode Sumber</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Sistem Reservasi">
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Sistem Reservasi Online</h3>
+                            <p>Platform booking dengan kalender interaktif dan integrasi pembayaran.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Angular</span>
+                                <span class="project-tag">Express</span>
+                                <span class="project-tag">PostgreSQL</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="btn btn-primary">Lihat</a>
+                                <a href="#" class="btn btn-secondary">Kode Sumber</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="kontak">
+                <h2>Hubungi Saya</h2>
+                <form id="formKontak" class="contact-form">
+                    <div class="form-group">
+                        <label for="nama">Nama Lengkap</label>
+                        <input type="text" id="nama" placeholder="Masukkan nama Anda" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Alamat Email</label>
+                        <input type="email" id="email" placeholder="email@contoh.com" required>
+                    </div>
+                    
+                    <div class="form-group full">
+                        <label for="pesan">Pesan Anda</label>
+                        <textarea id="pesan" placeholder="Tulis pesan Anda di sini..." required></textarea>
+                    </div>
+                    
+                    <div class="form-group submit-btn">
+                        <button type="submit" class="btn btn-primary btn-lg">Kirim Pesan</button>
+                    </div>
+                </form>
+                <p id="status"></p>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <div class="container">
+            <h3>Terhubung Dengan Saya</h3>
+            <div class="social-links">
+                <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-dribbble"></i></a>
+            </div>
+            <p class="copyright">© 2025 SYIHAB TEKNIK. Semua hak dilindungi.</p>
+        </div>
+    </footer>
+
+    <!-- Tombol WhatsApp Baru -->
+    <a href="https://wa.me/6285183144660" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Fungsi untuk menyimpan pesan ke localStorage
+        function simpanPesan(nama, email, pesan) {
+            // Ambil data yang sudah ada atau inisialisasi array kosong
+            const semuaPesan = JSON.parse(localStorage.getItem('pesan')) || [];
+            
+            // Buat objek pesan baru
+            const pesanBaru = {
+                id: Date.now(), // ID unik berdasarkan timestamp
+                nama: nama,
+                email: email,
+                pesan: pesan,
+                waktu: new Date().toLocaleString() // Waktu lokal
+            };
+
+            // Tambahkan ke array
+            semuaPesan.push(pesanBaru);
+            
+            // Simpan kembali ke localStorage
+            localStorage.setItem('pesan', JSON.stringify(semuaPesan));
+            
+            return pesanBaru;
+        }
+
+        // Fungsi untuk menampilkan notifikasi
+        function tampilkanNotifikasi(berhasil, pesan) {
+            const statusEl = document.getElementById('status');
+            statusEl.textContent = pesan;
+            statusEl.className = berhasil ? 'success' : 'error';
+            
+            // Hilangkan notifikasi setelah 5 detik
+            setTimeout(() => {
+                statusEl.textContent = '';
+                statusEl.className = '';
+            }, 5000);
+        }
+
+        // Handler form submit
+        document.getElementById('formKontak').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Ambil nilai form
+            const nama = document.getElementById('nama').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const pesan = document.getElementById('pesan').value.trim();
+            
+            // Validasi sederhana
+            if (!nama || !email || !pesan) {
+                tampilkanNotifikasi(false, 'Harap isi semua field!');
+                return;
+            }
+            
+            try {
+                // Simpan pesan
+                simpanPesan(nama, email, pesan);
+                
+                // Reset form
+                e.target.reset();
+                
+                // Tampilkan notifikasi sukses
+                tampilkanNotifikasi(true, 'Pesan terkirim! Terima kasih 😊');
+                
+                // (Opsional) Tampilkan data di console untuk debugging
+                console.log('Data tersimpan:', JSON.parse(localStorage.getItem('pesan')));
+                
+            } catch (error) {
+                console.error('Error:', error);
+                tampilkanNotifikasi(false, 'Terjadi kesalahan! Silakan coba lagi.');
+            }
+        });
+
+        // Animasi untuk navigasi
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                // Hapus kelas aktif dari semua link
+                document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                
+                // Tambahkan kelas aktif ke link yang diklik
+                this.classList.add('active');
+                
+                // Animasi scroll halus
+                const targetId = this.getAttribute('href');
+                if(targetId.startsWith('#')) {
+                    e.preventDefault();
+                    const targetElement = document.querySelector(targetId);
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Efek hover untuk kartu proyek
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                const colors = [
+                    'rgba(255, 107, 107, 0.1)',
+                    'rgba(255, 190, 11, 0.1)',
+                    'rgba(58, 134, 255, 0.1)',
+                    'rgba(131, 56, 236, 0.1)',
+                    'rgba(6, 214, 160, 0.1)'
+                ];
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                card.style.backgroundColor = randomColor;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.backgroundColor = 'white';
+            });
+        });
+    </script>
+</body>
+</html>
